@@ -1,0 +1,162 @@
+/* Reset and global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f7fa;
+    color: #222;
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #0d1b2a;
+    color: #ffffff;
+    padding: 20px 40px;
+    text-align: center;
+  }
+
+  header img {
+    float: left;
+    height: 60px;
+  }
+  
+  header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  /* Navigation */
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    gap: 20px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #1e2f45;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: 0.3s;
+  }
+  
+  nav ul li a:hover {
+    background-color: #3f5973;
+  }
+  
+  /* Main content sections */
+  main {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  section {
+    margin-bottom: 60px;
+  }
+  
+  section h2 {
+    color: #0d1b2a;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+  }
+  
+  section p {
+    margin-bottom: 15px;
+    font-size: 1.05em;
+  }
+  
+  ul {
+    margin: 15px 0;
+    padding-left: 20px;
+  }
+  
+  ul li {
+    margin-bottom: 8px;
+  }
+  
+  /* Hero section */
+  #hero {
+    background-image: url('images/tech-bg.jpg'); /* Replace with your actual image */
+    background-size: cover;
+    background-position: center;
+    padding: 80px 20px;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 60px;
+  }
+  
+  #hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  #hero p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .video-link {
+    display: inline-block;
+    margin-top: 15px;
+    background-color: #ffffff;
+    color: #142a0d;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  .hero-subtext {
+    color: #0d1b2a; /* deep dark blue */
+    font-size: 1.15em;
+    margin-bottom: 10px;
+  }
+  .video-link:hover {
+    background-color: #d9e4f0;
+  }
+  
+  fieldset{
+    border: 1px solid #f5f7fa;
+    width: 500px;
+    margin:auto;
+  }
+
+  legend {
+    font-weight: bold;
+  }
+
+  /* Call-to-action buttons */
+  .cta-button {
+    background-color: #0077cc;
+    color: white;
+    padding: 12px 20px;
+    margin: 10px;
+    display: inline-block;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .cta-button:hover {
+    background-color: #005fa3;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #0d1b2a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.95em;
+  }
