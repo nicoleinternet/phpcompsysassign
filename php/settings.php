@@ -6,10 +6,14 @@
 /* Explicitly declaring host, user, password and database
 so this can be changed by whoever for debugging. */
 //defines feenix mariadb
-$host = "feenix-mariadb.swin.edu.au";
-$user = "s100589839";
-$password = "Pa55w.rd";
-$database = "s100589839_db";
+$host = "127.0.0.1";
+$user = "root";
+$password = "";
+$database = "100589839_db";
 //create a new mySQLi connection
 $mysqli = new mysqli($host, $user, $password, $database);
+if ($mysqli->connect_errno) {
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+} else {printf("Connected successfully\n");}
+
 ?>

@@ -12,6 +12,9 @@
 
 
 <?php
+// Connect to database with settings.php, should output 'Connected Successfully'
+include 'settings.php';
+
 // Getting and setting POSTed fields
 if (isset($_POST['submit'])) { // Have we submitted the form?
     if (isset($_POST['firstname']) && isset($_POST['lastname']) !== null) { // if names are set and not NULL
@@ -84,7 +87,32 @@ function failed_validation() {
     //TODO present a nice screen to the user when the form has hit a failed state.
     // 7 MAY
 }
+
+
+// OKAY TO PREPARE STATEMENT FOR SQL
+// https://www.w3schools.com/php/php_mysql_insert.asp
+//DEBUG VALUES
+$job_reference = "5AJSD";
+$firstname = "John"; $lastname = "Doe";
+$email = "johndoe@example.com";
+$phone = "0411 111 111";
+$street_address = "CLAM Street";
+$suburb = "CLAM Suburb";
+$state = "CA";
+$postcode = "5000";
+$skills = "example";
+// END DEBUG
+// SQL QUERY
+// This inserts a row with the selected variables.
+$sql = "INSERT INTO eoi (job_ref,status,first_name,last_name,email,phone_number,street_address,suburb_address,state_address,postcode,skill_1,miscinfo)
+VALUES ('$job_reference','New','$firstname','$lastname','$email','$phone','$street_address','$suburb','$state',$postcode,'$skills','SAMPLE')";
+// DEBUG PRINT
+printf($sql);
+// TRY TO EXECUTE QUERY AND CATCH EXCEPTION
+try {
+    // $mysqli is the connection variable from settings.php
+    $mysqli->query($sql);
+} catch (Exception $e) {$mysqli. $e->getMessage();}
 ?>
 </body>
 </html>
-
