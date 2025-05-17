@@ -11,9 +11,9 @@ $user = "root";
 $password = "";
 $database = "100589839_db";
 //create a new mySQLi connection
-$mysqli = new mysqli($host, $user, $password, $database);
-if ($mysqli->connect_errno) {
-    printf("Connect failed: %s\n", $mysqli->connect_error);
-} else {printf("Connected successfully\n");}
+$conn = new mysqli($host, $user, $password, $database);
+if ($conn->connect_errno) {
+    die("Connect failed: ". $conn->connect_error);
+}
 
 ?>

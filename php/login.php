@@ -23,6 +23,8 @@
 <body>
 
 <?php
+// Author: Nicole Reichert (100589839) for COS10032 Comp. Systems Project
+// Assignment 2, PHP Forms (EOI). Team: Arvin Z, Matt C, Lachlan, Cale, Nicole
 // Include your connection settings and our helping functions
 include 'settings.php';
 include 'functionsite.php';
