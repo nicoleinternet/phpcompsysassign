@@ -1,3 +1,11 @@
+<!--
+// Unit/Assignment: COS10032 Comp Systems Project Assignment 3
+// Author: Nicole Reichert
+// Name : processEOI.php
+// Description: This is the processing page for expressions of interest, and parses information from a form.
+// The form must only have the specified incoming POST keys:
+// firstName, lastName, emailField, pNumber, street_address,suburb, state, postcode, jobrefNum, skills
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,184 +18,97 @@
 <body>
 
 
+
 <?php
-include "settings.php";
+// Connect to database with settings.php, should output 'Connected Successfully'
+include 'settings.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-// We can check if we have submitted the form
+// Getting and setting POSTed fields
+if (isset($_POST['submit'])) { // Have we submitted the form?
 
-
-// Create variables for readability
-$jobRefNum;
-$firstName;
-$lastName;
-$dob;
-$gender;
-$street_address;
-$suburb;
-$state;
-$postcode;
-$emailField;
-$pNumber;
-$otherSkills;
-
-if (are_fields_set()) {
-
-    $jobRefNum = validate_html($_POST['jobRefNum']);
-    $firstName = validate_html($_POST['firstName']);
-    $lastName = validate_html($_POST['lastName']);
-    $dob = validate_html($_POST['dob']);
-    $gender = validate_html($_POST['gender']);
-    $street_address = validate_html($_POST['street_address']);
-    $suburb = validate_html($_POST['suburb']);
-    $state = validate_html($_POST['state']);
-    $postcode = validate_html($_POST['postcode']);
-    $emailField = validate_html($_POST['emailField']);
-    $pNumber = validate_html($_POST['pNumber']);
-    $otherSkills = validate_html($_POST['otherSkills']);
-};
-
-// Validate items
-if (!is_under_size($jobRefNum,6) || !ctype_alnum($jobRefNum)) {
-    echo "";
-    // handle error here
-    fail($jobRefNum);
-}
-if (!is_under_size($firstName,20) || !ctype_alpha($firstName)) {
-    echo "";
-    // handle error here
-    fail($firstName);
-}
-if (!is_under_size($lastName,20) || !ctype_alpha($lastName)) {
-    echo "";
-    // handle error here
-    fail($lastName);
-}
-//TODO: DOB/GENDER
-if (!is_under_size($street_address,40)) {
-    echo "";
-    fail($street_address);
-}
-if (!is_under_size($suburb,40)) {
-    echo "";
-    fail($suburb);
-}
-// TO DO STATE AND POSTCODE HERE
-$valid_states = ['NSW','ACT','VIC','QLD','SA','WA','TAS','NT'];
-if (!in_array($state, $valid_states)) {
-    fail($state);
-}
-if (!valid_postcode($state,$postcode)) {
-    fail($postcode);
-};
-if (!is_under_size($emailField, 20)) {
-    fail($emailField);
-}
-
-// FROM PHPMyAdmin
-// $sql = "INSERT INTO `eoi`(`job_ref`, `status`, `first_name`, `last_name`, `email`, `phone_number`, `street_address`, `suburb_address`, `state_address`, `postcode`, `skill_1`, `skill_2`, `skill_3`, `skill_4`, `skill_5`, `miscinfo`) VALUES (\'[value-1]\',\'New\',\'[value-4]\',\'[value-5]\',\'[value-6]\',\'[value-7]\',\'[value-8]\',\'[value-9]\',\'VIC\',\'3000\',\'[value-12]\',\'[value-13]\',\'[value-14]\',\'[value-15]\',\'[value-16]\',\'[value-17]\');";
-$query = "INSERT INTO eoi('job_ref', 'status', 'first_name', 'last_name', 'email', 'phone_number', 'street_address', 'suburb_address', 'state_address', 'postcode', 'miscinfo') VALUES ('$jobRefNum','New','$firstName','$lastName','$emailField','$pNumber','$street_address','$suburb','$state','$postcode','$skills');";
-echo "<h3>$query</h3>";
-
-// Is this not a POST request?
-if (!$_SERVER['REQUEST_METHOD'] == "POST") {
-    $errorMsg = "You must submit the form.";
-    fail($errorMsg);
-
-}
-
-
-
-
-// Returns 1 (TRUE) or 0 (FALSE) based on field and SIZE
-function is_under_size($field, $size) : bool {
-    $value = trim((string)$field);
-    return strlen($value) < $size;
-}
-
-
-
-function valid_postcode($state, $postcode) : bool {
-
-    // https://stackoverflow.com/questions/14037290/what-does-or-mean-in-php
-    // We can use => like the map<> in C++, letting us define
-    // values in an array.
-
-    // This is technically creating a two dimensional array, with the second dimension having two indexes (the postcodes).
-    $postcodes = [
-        'NSW' => [1000, 2999],
-        'ACT' => [2600, 2618],
-        'VIC' => [3000, 3999],
-        'QLD' => [4000, 4999],
-        'SA'  => [5000, 5999],
-        'WA'  => [6000, 6999],
-        'TAS' => [7000, 7999],
-        'NT'  => [800, 999]
-    ];
-// if the postcode is within the bounds of the states second dimension array
-    if ($postcode >= $postcodes[$state][0] && $postcode <= $postcodes[$state][1]) {
-        return True;
-    } else {
-        return False;
+    if (isset($_POST['firstName']) && isset($_POST['lastName']) !== null) { // if names are set and not NULL
+        $firstName = sanitise_input($_POST['firstName']);
+        $lastName = sanitise_input($_POST['lastName']);
+    } else {failed_validation();}
+    if (isset($_POST['emailField']) && isset($_POST['pNumber']) !== null) {
+        $emailField = sanitise_input($_POST['emailField']);
+        $pNumber = sanitise_input($_POST['pNumber']);
+    } else {failed_validation();}
+    if (isset($_POST['street_address']) && isset($_POST['suburb']) && isset($_POST['state']) && isset($_POST['postcode']) !== null) { // get address
+        $street_address = sanitise_input($_POST['street_address']);
+        $suburb = sanitise_input($_POST['suburb']);
+        $state = sanitise_input($_POST['state']);
+        $postcode = sanitise_input($_POST['postcode']);
+    } else {failed_validation();}
+    if (isset($_POST['jobRefNum']) !== null) {
+        $jobRefNum = sanitise_input($_POST['jobRefNum']);
+    } else {failed_validation();}
+    // Not mandatory fields
+    if (isset($_POST['skills']) !== null) {
+        $skills = sanitise_input($_POST['skills']);
     }
+} else { header ("location: register.html");} // has the user not sent a 'submit' value?
 
-}
-
-
-// USE IN AN IF STATEMENT TO CHECK IF WE HAVE SET FIELDS
-function are_fields_set() : bool {
-$requiredfields = ['firstName','lastName','jobRefNum','suburb','postcode','street_address','gender'];
-foreach ($requiredfields as $field) {
-    if (!isset($_POST[$field]) || empty($_POST[$field])) {
-        echo "<p>Sorry, $field or more fields are empty.</p>";
-        return false;
-    }
-
-}
-return true;
-}
-
-
-// SET variables based on usage
-// if (isset($_POST['firstName'])) {
-//     $firstName = validate_html(firstName);
-// };
-// if (isset($_POST['lastName'])) {
-//     $firstName = validate_html(firstName);
-// };
-// if (isset($_POST['jobRefNum'])) {
-//     $jobRefNum = validate_html(jobRefNum);
-// };
-// if (isset($_POST['street_address'])) {
-//     $street_address = validate_html(street_address);
-// };
-// if (isset($_POST['suburb'])) {
-//     $suburb = validate_html(suburb);
-// };
-// if (isset($_POST['state'])) {
-//     $state = validate_html(state);
-// };
-// if (isset($_POST['postcode'])) {
-//     $postcode = validate_html(postcode);
-// };
-// if (isset($_POST['gender'])) {
-//     $gender = validate_html(gender);
-// };
-
-
-
-function validate_html($data) {
-    // trim, stripslashes, htmlspecialchars
+function sanitise_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
 }
 
-function fail($data)
-{
-    echo "<h1>Your input information is incorrect.</h1>";
-    echo "<h2>".$data."</h2>";
+/* Getting and setting variables from the form should be done now,
+and we can process input. */
+// Testing sizes of strings
+if (is_strlen_toobig($jobRefNum,5)) {
+    failed_validation();
+}
+if (is_strlen_toobig($firstName,20) || is_strlen_toobig($lastName,20)) {
+    failed_validation();
+}
+if (is_strlen_toobig($street_address,40) || is_strlen_toobig($suburb,40) || is_strlen_toobig($postcode,4) || is_strlen_toobig($state,3)) {
+    failed_validation();
 }
 
+// TODO check if postcode is one of VIC/NSW/QLD/etc
+
+// Testing numbers
+if (!ctype_digit($postcode)) {
+    failed_validation();
+}
+
+// ^[0-9, ]{1,10}$ (digits, space, max 10 char)
+if (!preg_match("/^[0-9, ]{1,10}$/",$pNumber)) {
+    failed_validation();
+}
+if (!preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/",$emailField)) {
+    failed_validation();
+}
+
+function is_strlen_toobig($data, $max) {
+    if (strlen($data) > $max) {
+        return True;
+    }
+    return False;
+
+}
+
+function failed_validation() {
+    //TODO present a nice screen to the user when the form has hit a failed state.
+    // 7 MAY
+}
+
+
+// SQL QUERY
+// This inserts a row with the selected variables.
+$sql = "INSERT INTO eoi (job_ref,status,first_name,last_name,email,phone_number,street_address,suburb_address,state_address,postcode,skill_1,miscinfo)
+VALUES ('$jobRefNum','New','$firstName','$lastName','$emailField','$pNumber','$street_address','$suburb','$state',$postcode,'$skills','SAMPLE')";
+// DEBUG PRINT
+printf($sql);
+// TRY TO EXECUTE QUERY AND CATCH EXCEPTION
+try {
+    // $mysqli is the connection variable from settings.php
+    $mysqli->query($sql);
+} catch (Exception $e) {$mysqli. $e->getMessage();}
 ?>
 </body>
 </html>

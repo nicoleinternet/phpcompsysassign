@@ -1,8 +1,11 @@
+<!--
+// Unit/Assignment: COS10032 Comp Systems Project Assignment 3
+// Author: Nicole Reichert
+// Name : functionsite.php
+// Description: This is a general helperfunction file that allows us to test valid input or reference
+// error if needed, we can also check for postcode issues or if there is a valid, unique sign up email.
+-->
 <?php
-//NICOLE REICHERT
-// COS10032 COMP SYSTEMS PROJECT
-// Generic helper function to trim data for security in PHP
-
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);

@@ -1,4 +1,14 @@
-<!--MANAGE.PHP NICOLE REICHERT -->
+<!--
+// Unit/Assignment: COS10032 Comp Systems Project Assignment 3
+// Author: Nicole Reichert
+// Name : Manage.php
+// Description: This is the managing page for the assignment and will display all rows of EOI by default.
+// The user can specify the JobRefNo, LastName or FirstName to search by wildcard rule against the eoi
+// table for the respective columns.
+// This page is linked to from login.php when a user successfully logs in, and branches out into edit.php
+// on editing the status (select) or the Edit link, or delete.php when clicked.
+// Uses manage.inc.php to handle most verbose functions.
+ -->
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -76,10 +86,10 @@ BUG: the hover current takes over space for some of the job reference titles. */
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
-    visibility:visible; 
+    visibility:visible;
     opacity: 1;
      padding-top: 1.2em;
-     
+
     }
 
 @keyframes expand {
@@ -89,7 +99,7 @@ BUG: the hover current takes over space for some of the job reference titles. */
     to {
         transform: scaleY(0%);
     }
-    
+
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
@@ -125,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['lastName'])) {
         $lastName = test_input($_POST['lastName']);
     }
-    
+
     // Build and execute query with form data
     $result = $conn->query("SELECT * FROM `eoi` WHERE job_ref LIKE '%$jobRef%' AND first_name LIKE '%$firstName%' AND last_name LIKE '%$lastName%'");
 } else {
@@ -133,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query("SELECT * FROM `eoi`");
 }
 
- 
+
 
  // We can ask if we have set the session from logging in ($_SESSION['username'])
  // if not, we can redirect them back to the login page.
@@ -169,9 +179,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <main>
     <section id="hero">
-        
 
+        <!-- Print EOI results from an included function here -->
+        <section class="eoiresult">
         <?php print_eoi_results($result); ?>
+        </section>
 
         <aside class="dropdown">
             <button class="dropbtn">Search</button>

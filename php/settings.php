@@ -1,11 +1,15 @@
 <?php
+/*
+// Unit/Assignment: COS10032 Comp Systems Project Assignment 3
+// Author: Nicole Reichert
+// Name : Manage.php
+// Description: This is the settings page for the mysqli connection to the database.
+ */
 // Using MYSQLi (MySQL Improved Extension
-// Author: Nicole Reichert (100589839) for COS10032 Comp. Systems Project
-// Assignment 2, PHP Forms (EOI). Team: Arvin Z, Matt C, Lachlan, Cale, Nicole
+
 
 /* Explicitly declaring host, user, password and database
 so this can be changed by whoever for debugging. */
-//defines feenix mariadb
 $host = "127.0.0.1";
 $user = "root";
 $password = "";

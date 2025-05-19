@@ -1,3 +1,11 @@
+<!--
+// Unit/Assignment: COS10032 Comp Systems Project Assignment 3
+// Author: Nicole Reichert
+// Name : register.php
+// Description: This is the register page to create an account to manage the EOIs and access via the login
+// page as part of an enhancement to the Assignment. It will check for valid email addresses via the
+// include at functionsite.php and perform a hash to then insert into the userdata table.
+-->
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -24,8 +32,8 @@
 
 
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// Author: Nicole Reichert (100589839) for COS10032 Comp. Systems Project
+// Assignment 2, PHP Forms (EOI). Team: Arvin Z, Matt C, Lachlan, Cale, Nicole
 include 'settings.php';
 include 'functionsite.php';
 $conn = new mysqli($host, $user, $password, $database);
@@ -117,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <section id="hero">
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" novalidate="novalidate" class="submission">
-            <h2>REGISTER</h2>
+            <h2>Register</h2>
             <label for="username"><h4 class="hero-subtext">Username</h4></label>
             <input type="text" placeholder="Enter Username" name="username" required>
             <p class="error"><?php echo $nameErr;?></p>

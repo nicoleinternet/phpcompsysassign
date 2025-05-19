@@ -10,6 +10,7 @@ $id = $_GET['id'];
 
 // Delete row from the database table
 $result = mysqli_query($mysqli, "DELETE FROM eoi WHERE id = $id");
+// DONT EXECUTE HERE JUST YET, NEED TO ADD BUTTON
 
 // Redirect to the main display page (index.php in our case)
 header("location:manage.php");

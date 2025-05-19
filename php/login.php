@@ -1,3 +1,11 @@
+<!--
+// Unit/Assignment: COS10032 Comp Systems Project Assignment 3
+// Author: Nicole Reichert
+// Name : login.php
+// Description: This is the login page for the site, and will query the database against the PHP password hash
+// using password_verify(). This means any account within the database needs to be created using PHP, as the MySQL
+// password hash is different. After a successful login, a session will be created against the user.
+-->
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -7,25 +15,13 @@
   <meta name="author" content="Arvin Zia">
   <title>CLAM Careers - Login</title>
   <link rel="stylesheet" href="../styles/style.css">
-  <!-- TO ADD INTO CSS LATER NICOLE -->
   <style>
-    .error {
-        color: rgb(213, 13, 13);
-        font-size:1em;
-        font-weight:600;
-        /*display: flex;*/
-    }
-    .submission {
-        text-align: center;
-    }
+
     </style>
 </head>
 <body>
 
 <?php
-// Author: Nicole Reichert (100589839) for COS10032 Comp. Systems Project
-// Assignment 2, PHP Forms (EOI). Team: Arvin Z, Matt C, Lachlan, Cale, Nicole
-// Include your connection settings and our helping functions
 include 'settings.php';
 include 'functionsite.php';
 //create a new mySQLi connection
@@ -104,7 +100,7 @@ $conn->close();
     <section id="hero">
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" novalidate="novalidate" class="submission">
-            <h2>LOGIN</h2>
+            <h2>Login</h2>
                 <label for="username"><h4 class="hero-subtext">Username</h4></label>
                 <input type="text" placeholder="Enter Username" name="username" required>
                 <p class="error"><?php echo $nameErr;?></p>
