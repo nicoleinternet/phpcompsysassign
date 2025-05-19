@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 15, 2025 at 06:00 PM
+-- Generation Time: May 19, 2025 at 04:23 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -79,6 +79,13 @@ CREATE TABLE `eoi` (
   `miscinfo` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Dumping data for table `eoi`
+--
+
+INSERT INTO `eoi` (`eoi_id`, `job_ref`, `status`, `first_name`, `last_name`, `email`, `phone_number`, `street_address`, `suburb_address`, `state_address`, `postcode`, `skill_1`, `skill_2`, `skill_3`, `skill_4`, `skill_5`, `miscinfo`) VALUES
+(1, 'DA789', 'Final', 'John', 'Doe', 'johndoe@example.com', '04111111111', '5 Test Lane', 'Driverston', 'VIC', 3000, NULL, NULL, NULL, NULL, NULL, 'Worked at X Company, Y tasks completed!');
+
 -- --------------------------------------------------------
 
 --
@@ -90,13 +97,20 @@ CREATE TABLE `job_descriptions` (
   `job_ref` varchar(10) NOT NULL,
   `job_title` varchar(80) NOT NULL,
   `status` enum('New','Current','Final') NOT NULL DEFAULT 'New',
-  `skill_1` varchar(100) DEFAULT NULL,
-  `skill_2` varchar(100) DEFAULT NULL,
+  `skill_1` varchar(300) DEFAULT NULL,
+  `skill_2` varchar(300) DEFAULT NULL,
   `skill_3` varchar(100) DEFAULT NULL,
   `skill_4` varchar(100) DEFAULT NULL,
   `skill_5` varchar(100) DEFAULT NULL,
   `miscinfo` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `job_descriptions`
+--
+
+INSERT INTO `job_descriptions` (`eoi_id`, `job_ref`, `job_title`, `status`, `skill_1`, `skill_2`, `skill_3`, `skill_4`, `skill_5`, `miscinfo`) VALUES
+(1, 'DA789', 'Front-End Developer', 'Current', '</ul>\r\n<li>Develop and maintain web applications</li>\r\n<li>Work with UX/UI designers to create responsive layouts</li>\r\n<li>Ensure cross-browser compatibility</li>\r\n<li>Optimize websites for speed and performance</li>\r\n</ul>', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -167,13 +181,13 @@ ALTER TABLE `cars`
 -- AUTO_INCREMENT for table `eoi`
 --
 ALTER TABLE `eoi`
-  MODIFY `eoi_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `eoi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `job_descriptions`
 --
 ALTER TABLE `job_descriptions`
-  MODIFY `eoi_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `eoi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `userdata`
