@@ -11,11 +11,7 @@ draw_headerhtml("Delete User");
 ?>
 <body>
 
-<main>
 <?php
-
-
-
 // Get id parameter value from URL
 $id = $_GET['id'];
 // Delete row from the database table
@@ -29,6 +25,8 @@ if ($conn->query($sql) === TRUE) {
 // Redirect to the main display page (index.php in our case)
 header("location: manage.php");
 ?>
+
+<main>
 </main>
 <?php draw_footerhtml(); ?>
 </body>

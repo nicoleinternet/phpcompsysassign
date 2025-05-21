@@ -181,6 +181,7 @@
   }
 .submission {
     text-align: center;
+    color: black;
     font-family: 'NimbusSanLRegular', sans-serif;
     margin: 0px auto;
     background-color: white;
@@ -192,6 +193,10 @@
 .submission .error {
     font-size: 0.5em !important;
     text-align: left;
+}
+.submission fieldset {
+  color: black !important;
+  border: 0px !important;
 }
 .submission button {
     background-color: grey;

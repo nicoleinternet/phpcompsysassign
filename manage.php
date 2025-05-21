@@ -85,10 +85,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ?>
 
         </section>
-        <aside class="dropdown">
-            <button class="dropbtn">Search</button>
-            <div class="dropdown-content">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" novalidate="novalidate" class="submission">
+        <aside>
+
+        <form class="submission" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" novalidate="novalidate" class="submission">
+            <h3>Search</h3>
+            <fieldset>
                 <label for="jobRef">Job Reference No.</label>
                 <input type="text" placeholder="Enter Job Reference No." id="jobRef" name="jobRef" required>
                 <p class="error"><?php echo $jobRefErr;?></p>
@@ -103,12 +104,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <button type="submit" class="video-link">Submit</button>
                 <p class="error"><?php echo $formErr;?></p>
+                </fieldset>
+
 
         </form>
-    </div>
+
     </aside>
 
-        </form>
+
+
     </section>
 </main>
 <?php draw_footerhtml(); ?>

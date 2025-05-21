@@ -1,23 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
 <?php
-include "settings.php";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+include 'settings.php';
+include 'menu.inc.php';
 // We can check if we have submitted the form
-
+draw_headerhtml("Thank you!");
 
 // Create variables for readability
-$jobRefNum;
-$firstName;
-$lastName;
-$dob;
-$gender;
-$street_address;
-$suburb;
-$state;
-$postcode;
-$emailField;
-$pNumber;
-$otherSkills;
+$jobRefNum = "";
+$firstName = "";
+$lastName = "";
+$dob = "";
+$gender = "";
+$street_address = "";
+$suburb = "";
+$state = "";
+$postcode = "";
+$emailField = "";
+$pNumber = "";
+$otherSkills = "";
 
 if (are_fields_set()) {
 
@@ -33,9 +34,9 @@ if (are_fields_set()) {
     $emailField = validate_html($_POST['emailField']);
     $pNumber = validate_html($_POST['pNumber']);
     $otherSkills = validate_html($_POST['otherSkills']);
-};
+    $gender = validate_html($_POST['gender']);
 
-// Validate items
+    // Validate items
 if (!is_under_size($jobRefNum,6) || !ctype_alnum($jobRefNum)) {
     echo "";
     // handle error here
@@ -71,11 +72,25 @@ if (!valid_postcode($state,$postcode)) {
 if (!is_under_size($emailField, 20) || !filter_var($emailField, FILTER_VALIDATE_EMAIL)) {
     fail($emailField);
 }
+};
+
+
 
 // FROM PHPMyAdmin
 // $sql = "INSERT INTO `eoi`(`job_ref`, `status`, `first_name`, `last_name`, `email`, `phone_number`, `street_address`, `suburb_address`, `state_address`, `postcode`, `skill_1`, `skill_2`, `skill_3`, `skill_4`, `skill_5`, `miscinfo`) VALUES (\'[value-1]\',\'New\',\'[value-4]\',\'[value-5]\',\'[value-6]\',\'[value-7]\',\'[value-8]\',\'[value-9]\',\'VIC\',\'3000\',\'[value-12]\',\'[value-13]\',\'[value-14]\',\'[value-15]\',\'[value-16]\',\'[value-17]\');";
-$query = "INSERT INTO eoi('job_ref', 'status', 'first_name', 'last_name', 'email', 'phone_number', 'street_address', 'suburb_address', 'state_address', 'postcode', 'miscinfo') VALUES ('$jobRefNum','New','$firstName','$lastName','$emailField','$pNumber','$street_address','$suburb','$state','$postcode','$skills');";
-echo "<h3>$query</h3>";
+$sql = "INSERT INTO eoi(job_ref, status, first_name, last_name, email, phone_number, street_address, suburb_address, state_address, postcode, miscinfo, dob, gender) VALUES ('$jobRefNum','New','$firstName','$lastName','$emailField','$pNumber','$street_address','$suburb','$state','$postcode','$otherSkills', '$dob','$gender');";
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+if (mysqli_query($conn, $query)) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $query . "<br>" . mysqli_error($conn);
+}
+
 
 // Is this not a POST request?
 if (!$_SERVER['REQUEST_METHOD'] == "POST") {
@@ -130,6 +145,12 @@ foreach ($requiredfields as $field) {
         echo "<p>Sorry, $field or more fields are empty.</p>";
         return false;
     }
+    if (isset($_POST['otherSkill'])) {
+        if (!isset($_POST['otherSkills']) || empty($_POST['otherSkills'])) {
+            echo "<p>Sorry, $field or more fields are empty.</p>";
+            return false;
+        }
+    }
 
 }
 return true;
@@ -147,4 +168,10 @@ function fail($data)
     echo "<h2>".$data."</h2>";
 }
 
+
 ?>
+<body>
+</body>
+
+</body>
+</html>

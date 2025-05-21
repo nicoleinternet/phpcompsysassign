@@ -57,8 +57,8 @@ draw_headerhtml("Welcome to CLAM IT");
     <section id="join-us" style="text-align: center;">
       <h2>Be Part of the Future</h2>
       <p>Browse career opportunities. Apply with confidence. Discover what the world of IT can offer you.</p>
-      <a href="jobs.html" class="cta-button">🔍 View Jobs</a>
-      <a href="apply.html" class="cta-button">📄 Apply Now</a>
+      <a href="jobs.php" class="cta-button">🔍 View Jobs</a>
+      <a href="apply.php" class="cta-button">📄 Apply Now</a>
     </section>
   </main>
 
