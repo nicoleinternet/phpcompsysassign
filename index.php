@@ -1,32 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="description" content="CLAM Careers - Your Gateway to the Future of IT">
-  <meta name="keywords" content="IT Careers, Cyber Security, CLAM, Web, Australia, Future Tech">
-  <meta name="author" content="Arvin Zia">
-  <title>CLAM Careers - Explore the Future</title>
-  <link rel="stylesheet" href="styles/style.css">
-</head>
+<?php
+include 'menu.inc.php';
+draw_headerhtml("Welcome to CLAM IT");
+
+
+?>
+
 
 <body>
-  <header>
-    <a href="index.html">
-      <img src="images/logo.png" alt="CLAM Logo" width="100"> <!-- Path changed. Moved all images to corresponding image folder - Cale -->
-    </a>
-    <h1>Welcome to CLAM Careers</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="jobs.html">Jobs</a></li>
-        <li><a href="apply.html">Apply</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="enhancements.html">Enhancements</a></li>
-        <li><a href="mailto:105907067@student.swin.edu.au">Contact Us</a></li> <!-- Changed to "Contact Us" rather than "Contact" - Cale -->
-      </ul>
-    </nav>
-  </header>
-
   <main>
     <!-- Hero Section -->
     <section id="hero" style="text-align: center;">
@@ -81,8 +62,6 @@
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 CLAM Careers. Made with code and ambition. Powered by purpose.</p>
-  </footer>
+  <?php draw_footerhtml(); ?>
 </body>
 </html>

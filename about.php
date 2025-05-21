@@ -1,36 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+include 'menu.inc.php';
+draw_headerhtml("Get to know CLAM");
+?>
 
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="description" content= "COS10032 Computing Systems Project">
-    <meta name="keywords" content="Computing Systems, Swinburne">
-    <meta name="author" content="Lachlan.Williams">
-    <title>Clam's About Page</title>
-    <link href="styles/style.css" rel="stylesheet">
-</head>
 <body>
-
-
-    <header>
-        <a href="index.html">        <!-- company logo and the hyperlink back to home -->
-            <img src="images/logo.png" alt="CLAM Logo" width="100"></a> <!-- Path changed. Moved all images to corresponding image folder - Cale -->
-        <h1>Get to know about the CLAM</h1> 
-        <nav>
-        <ul>
-            <li>    <a href="index.html">Home</a> </li><!-- Home page link -->
-            <li>   <a href="jobs.html">Jobs</a> </li><!-- Jobs page link -->
-                <li>   <a href="apply.html">Apply</a></li> <!-- Apply page link -->
-                    <li>   <a href="about.html">About</a></li> <!-- About page link -->
-                        <li>   <a href="enhancements.html">Enhancements</a> </li><!-- Enhancements page link -->
-                            <li>   <a href="mailto:105907067@student.swin.edu.au">Contact Us</a></li> <!-- Email contact link --> <!-- Changed to "Contact Us" rather than "Contact" - Cale -->
-            </ul>
-        </nav>
-    </header>
-
- <hr />
-    
  <main>
         <!-- About the team  -->
         <section>
@@ -218,8 +193,6 @@
         
 
           <!-- Footer section with copyright notice -->
-    <footer>
-        <p>&copy; 2025 CLAM. All rights reserved.</p>
-    </footer>
+    <?php draw_footerhtml(); ?>
 </body>
 </html>

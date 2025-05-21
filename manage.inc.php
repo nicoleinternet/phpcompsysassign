@@ -26,12 +26,12 @@ echo "<tr>
         <th>Update</th>
     </tr>";
     while ($row = $result->fetch_assoc()) {
-
+    
         // eoi_id is the primarykey/UID of EOIs, can use to delete
         $id = $row["eoi_id"];
         echo "<tr>
         <td>{$row["job_ref"]}</td>
-        <!--<td>{$row["status"]}</td>-->
+        <!--<td>{$row["status"]}</td>--> 
         <td>
         <form action='edit.php' method='post' novalidate='novalidate'>
         <select name='status' id='status'>
@@ -58,6 +58,7 @@ echo "</table>";
 
 
 }
+
 function print_single_eoi($result)
 {
     if (mysqli_num_rows($result) == 0) {
@@ -92,6 +93,13 @@ function print_single_eoi($result)
     }
 }
 
+
+
+
+// FUNCTION TO DELETE
+// function remove_entry($id) {
+//     $result = $conn->query("DELETE")
+// }
 
 
 ?>

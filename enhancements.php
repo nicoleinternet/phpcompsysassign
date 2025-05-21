@@ -1,32 +1,13 @@
 <!DOCTYPE html>
 <html lang = "en">
-<head>
-    <meta charset = "UTF-8" />
-    <meta name = "description" content = "COS10032 Computing Systems Project">
-    <meta name = "keywords" content = "Computing Systems, Swinburne">
-    <meta name = "author" content = "Cale Challinger">
-    <title>Enhancements Page</title>
-    <link href = "styles/style.css" rel = "stylesheet">
-</head>
+<?php
+include 'menu.inc.php';
+draw_headerhtml("Enhancements");
+
+
+?>
 <body>
-    <header>
-        <a href = "index.html">
-            <img src = "images/logo.png" alt = "CLAM Logo" width = "100">
-        </a>
-        <h1>
-            Enhancements behind the CLAM website
-        </h1>
-        <nav>
-            <ul>
-                <li><a href = "index.html">Home</a></li>
-                <li><a href = "jobs.html">Jobs</a></li>
-                <li><a href = "apply.html">Apply</a></li>
-                <li><a href = "about.html">About</a></li>
-                <li><a href = "enhancements.html">Enhancements</a></li>
-                <li><a href = "mailto:105907067@student.swin.edu.au">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
+
     <main>
         <section>
             <h2>Call To Action Buttons and Classes</h2>
@@ -52,8 +33,6 @@
             <p>Additionally both links are examples themselves.</p>
         </aside>
     </main>
-    <footer>
-        <p>&copy; 2025 CLAM. All rights reserved</p>
-    </footer>
+    <?php draw_footerhtml(); ?>
 </body>
 </html>

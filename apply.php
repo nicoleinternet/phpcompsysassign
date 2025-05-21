@@ -1,40 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+include 'menu.inc.php';
+draw_headerhtml("Job Enquiries");
+?>
 
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="description" content= "COS10032 Computing Systems Project">
-    <meta name="keywords" content="Computing Systems, Swinburne">
-    <meta name="author" content="Mathew Calf">
-    <title>group assignment my part</title>
-
-    <link href="styles/style.css" rel="stylesheet">
-
-</head>
 <body>
-<header>
-    <a href="index.html">        <!-- company logo and the hyperlink back to home -->
-        <img src="images/logo.png" alt="CLAM Logo" width="100"> </a> <!-- Path changed. Moved all images to corresponding image folder - Cale -->
-<h1>Job Application</h1> 
-    <nav>
-    <ul>
-        <li> <a href="index.html">Home</a>   </li>                               <!-- HYPERLINKS TO GET AROUND THE WEBSITE -->
-            <li> <a href="jobs.html">Jobs</a> </li>
-                <li> <a href="apply.html">Apply</a> </li>
-                    <li> <a href="about.html">About</a></li>
-                        <li>  <a href="enhancements.html">Enhancements</a></li>
-                            <li> <a href="mailto:105907067@student.swin.edu.au">Contact Us</a></li> <!-- Changed to "Contact Us" rather than "Contact" - Cale -->
-    </ul> 
-    </nav>
-     <hr />
-      
+
 <p>Looking for a postion?</p>
 <p>Fill out the form and we'll get back to you if interested</p>
-<form method="post" action="php/processEOI.php" novalidate="novalidate">
-</header>
-
-
+<form method="post" action="processEOI.php" novalidate="novalidate">
 <fieldset>
     <legend>Applicant Details:</legend>                                                                                                         <!--  this is a legend labeling the applicant details part of the form -->
     <label for="jobRefNum">Job reference number</label>                                                                                         <!--  this is the label for the job reference box, input for the job reference box underneath-->
@@ -127,9 +102,7 @@
 </form>
 
 
-<footer>
-    <p>&copy; 2025 CLAM. All rights reserved.</p>
-</footer>
+<?php draw_footerhtml(); ?>
 
 </body>
         

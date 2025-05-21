@@ -1,33 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Meta information about the document -->
-    <meta charset="UTF-8">
-    <meta name="IT_ industary" content="Job descriptions in the IT industry">
-    <meta author="Arvin.zia">
-    <title>Job Descriptions: Cyber Security Analyst, Front-End Developer</title>
-    <!-- Link to the external CSS file for styling -->
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
-    <header>
-        <a href="index.html">
-            <img src="images/logo.png" alt="CLAM Logo" width="100"> <!-- Path changed. Moved all images to corresponding image folder - Cale -->
-          </a>
-        <h1>Careers at CLAM</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li> <!-- Home page link -->
-                <li><a href="jobs.html">Jobs</a></li> <!-- Jobs page link -->
-                <li><a href="apply.html">Apply</a></li> <!-- Apply page link -->
-                <li><a href="about.html">About</a></li> <!-- About page link -->
-                <li><a href="enhancements.html">Enhancements</a></li> <!-- Enhancements page link -->
-                <li><a href="mailto:105907067@student.swin.edu.au">Contact Us</a></li> <!-- Email contact link --> <!-- Changed to "Contact Us" rather than "Contact" - Cale -->
-            </ul>
-        </nav>
-    </header>
+<?php
+include 'menu.inc.php';
+draw_headerhtml("Job Listings");
 
-  
+
+?>
+
+
+  <body>
     <main>
         <!-- First Job Description: Front-End Developer -->
         <section>
@@ -114,8 +95,6 @@
     </main>
 
     <!-- Footer section with copyright notice -->
-    <footer>
-        <p>&copy; 2025 CLAM. All rights reserved.</p>
-    </footer>
+    <?php draw_footerhtml(); ?>
 </body>
 </html>

@@ -18,14 +18,14 @@
     padding: 0;
     box-sizing: border-box;
   }
-
+  
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     background-color: #f5f7fa;
     color: #222;
   }
-
+  
   /* Header styles */
   header {
     background-color: #0d1b2a;
@@ -40,12 +40,12 @@
     float: left;
     height: 60px;
   }
-
+  
   header h1 {
     font-size: 2em;
     margin-bottom: 10px;
   }
-
+  
   /* Navigation */
   nav ul {
     list-style: none;
@@ -55,7 +55,7 @@
     padding: 10px 0;
     gap: 20px;
   }
-
+  
   nav ul li a {
     text-decoration: none;
     color: #ffffff;
@@ -64,42 +64,42 @@
     border-radius: 6px;
     transition: 0.3s;
   }
-
+  
   nav ul li a:hover {
     background-color: #3f5973;
   }
-
+  
   /* Main content sections */
   main {
     padding: 40px 20px;
     max-width: 1000px;
     margin: 0 auto;
   }
-
+  
   section {
     margin-bottom: 60px;
   }
-
+  
   section h2 {
     color: #0d1b2a;
     margin-bottom: 15px;
     font-size: 1.8em;
   }
-
+  
   section p {
     margin-bottom: 15px;
     font-size: 1.05em;
   }
-
+  
   ul {
     margin: 15px 0;
     padding-left: 20px;
   }
-
+  
   ul li {
     margin-bottom: 8px;
   }
-
+  
   /* Hero section */
   #hero {
     /* Fixing background image - Nicole */
@@ -113,17 +113,17 @@
     border-radius: 10px;
     margin-bottom: 60px;
   }
-
+  
   #hero h2 {
     font-size: 2.5em;
     margin-bottom: 20px;
   }
-
+  
   #hero p {
     font-size: 1.2em;
     margin-bottom: 10px;
   }
-
+  
   .video-link {
     display: inline-block;
     margin-top: 15px;
@@ -143,7 +143,7 @@
   .video-link:hover {
     background-color: #d9e4f0;
   }
-
+  
   fieldset{
     border: 1px solid #f5f7fa;
     width: 500px;
@@ -166,7 +166,7 @@
     font-weight: bold;
     transition: background-color 0.3s;
   }
-
+  
   .cta-button:hover {
     background-color: #005fa3;
   }
@@ -211,6 +211,91 @@ background-color: color(srgb 0.1806 0.3053 0.43);
 color: white !important;
 border-radius: .4em .4em 0 0;
 }
+
+        .eoi {
+            color: black;
+            border: 1px solid;
+            border-collapse: collapse;
+            padding:1em;
+            border-radius:
+            margin:1em;
+        }
+        .eoi th, td {
+            color: black;
+            border: 1px solid;
+            padding: .5em;
+        }
+        .error {
+            color: rgb(213, 13, 13);
+            font-size:1em;
+            font-weight:600;
+            /*display: flex;*/
+        }
+        .submission {
+            text-align: center;
+        }
+
+        /* Dropdown Button */
+.dropbtn {
+  background-color: #0d1b2a;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border-radius:3px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  visibility:none;
+  position: absolute;
+  opacity: 0;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  transition: all 0.3s ease-out;
+  z-index: 1;
+  transition: visibility 0s, opacity 0.1s linear, expand 0.6s smooth;
+}
+
+/* Links inside the dropdown */
+.dropdown-content table {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover
+BUG: the hover current takes over space for some of the job reference titles. */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    visibility:visible;
+    opacity: 1;
+     padding-top: 1.2em;
+
+    }
+
+@keyframes expand {
+    from {
+        transform: scaleY(0%);
+    }
+    to {
+        transform: scaleY(0%);
+    }
+
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color:#1b3149;}
   /* NICOLE END */
   /* Footer */
   footer {

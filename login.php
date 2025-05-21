@@ -19,11 +19,12 @@
 
     </style>
 </head>
-<body>
+
 
 <?php
 include 'settings.php';
 include 'functionsite.php';
+include 'menu.inc.php';
 //create a new mySQLi connection
 $conn = new mysqli($host, $user, $password, $database);
 // Check for POST
@@ -75,27 +76,11 @@ if ($stmt = $conn->prepare("SELECT id, password FROM userdata WHERE username = ?
 }
 $conn->close();
 
+draw_headerhtml("Login");
 
 ?>
 
-<header>
-    <a href="index.html">
-      <img src="../images/logo.png" alt="CLAM Logo" width="100"> <!-- Path changed. Moved all images to corresponding image folder - Cale -->
-    </a>
-    <h1>Welcome to CLAM Careers</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="jobs.html">Jobs</a></li>
-        <li><a href="apply.html">Apply</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="enhancements.html">Enhancements</a></li>
-        <li><a href="mailto:105907067@student.swin.edu.au">Contact Us</a></li> <!-- Changed to "Contact Us" rather than "Contact" - Cale -->
-      </ul>
-    </nav>
-  </header>
-
-
+<body>
 <main>
     <section id="hero">
 
@@ -115,6 +100,6 @@ $conn->close();
         </form>
     </section>
 </main>
-
+<?php draw_footerhtml(); ?>
 </body>
 </html>

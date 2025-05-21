@@ -6,29 +6,11 @@
 // page as part of an enhancement to the Assignment. It will check for valid email addresses via the
 // include at functionsite.php and perform a hash to then insert into the userdata table.
 -->
+
 <!DOCTYPE html>
 <html lang='en'>
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="CLAM Careers - Your Gateway to the Future of IT">
-    <meta name="keywords" content="IT Careers, Cyber Security, CLAM, Web, Australia, Future Tech">
-    <meta name="author" content="Arvin Zia">
-    <title>CLAM Careers - Login</title>
-    <link rel="stylesheet" href="../styles/style.css">
-    <!-- TO ADD INTO CSS LATER NICOLE -->
-    <style>
-        .error {
-            color: rgb(213, 13, 13);
-            font-size:1em;
-            font-weight:600;
-            /*display: flex;*/
-        }
-        .submission {
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
+
+
 
 
 <?php
@@ -36,6 +18,7 @@
 // Assignment 2, PHP Forms (EOI). Team: Arvin Z, Matt C, Lachlan, Cale, Nicole
 include 'settings.php';
 include 'functionsite.php';
+include 'menu.inc.php';
 $conn = new mysqli($host, $user, $password, $database);
 session_start();
 $nameErr = $emailErr = $formErr = $passErr = "";
@@ -102,24 +85,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $conn->close();
     }
 }
-?>
-<header>
-    <a href="index.html">
-        <img src="../images/logo.png" alt="CLAM Logo" width="100"> <!-- Path changed. Moved all images to corresponding image folder - Cale -->
-    </a>
-    <h1>Welcome to CLAM Careers</h1>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="jobs.html">Jobs</a></li>
-            <li><a href="apply.html">Apply</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="enhancements.html">Enhancements</a></li>
-            <li><a href="mailto:105907067@student.swin.edu.au">Contact Us</a></li> <!-- Changed to "Contact Us" rather than "Contact" - Cale -->
-        </ul>
-    </nav>
-</header>
 
+
+draw_headerhtml("Register Account");
+?>
+
+
+<body>
 
 <main>
     <section id="hero">
@@ -144,6 +116,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
     </section>
 </main>
-
+<?php draw_footerhtml(); ?>
 </body>
 </html>
