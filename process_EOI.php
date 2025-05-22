@@ -85,11 +85,7 @@ if ($conn->query($sql) === TRUE) {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-if (mysqli_query($conn, $query)) {
-  echo "New record created successfully";
-} else {
-  echo "Error: " . $query . "<br>" . mysqli_error($conn);
-}
+
 
 
 // Is this not a POST request?
@@ -103,14 +99,20 @@ if (!$_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 // Returns 1 (TRUE) or 0 (FALSE) based on field and SIZE
-function is_under_size($field, $size) : bool {
+function is_under_size($field, $size) {
     $value = trim((string)$field);
+    if (strlen($value) < $size) {
+        return true;
+    } else {
+        return false;
+    }
+
     return strlen($value) < $size;
 }
 
 
 
-function valid_postcode($state, $postcode) : bool {
+function valid_postcode($state, $postcode) {
 
     // https://stackoverflow.com/questions/14037290/what-does-or-mean-in-php
     // We can use => like the map<> in C++, letting us define
@@ -129,16 +131,16 @@ function valid_postcode($state, $postcode) : bool {
     ];
 // if the postcode is within the bounds of the states second dimension array
     if ($postcode >= $postcodes[$state][0] && $postcode <= $postcodes[$state][1]) {
-        return True;
+        return true;
     } else {
-        return False;
+        return false;
     }
 
 }
 
 
 // USE IN AN IF STATEMENT TO CHECK IF WE HAVE SET FIELDS
-function are_fields_set() : bool {
+function are_fields_set() {
 $requiredfields = ['firstName','lastName','jobRefNum','suburb','postcode','street_address','gender'];
 foreach ($requiredfields as $field) {
     if (!isset($_POST[$field]) || empty($_POST[$field])) {
