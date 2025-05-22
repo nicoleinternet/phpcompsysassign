@@ -97,9 +97,11 @@ function print_single_eoi($result)
 
 
 // FUNCTION TO DELETE
-// function remove_entry($id) {
-//     $result = $conn->query("DELETE")
-// }
-
+function delete_notification($id) {
+    echo "<section class=\"submission\">
+    <h3> User with ID: $id has been deleted. </h3>
+    </section>
+    ";
+}
 
 ?>

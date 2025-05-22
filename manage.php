@@ -77,10 +77,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php
         // Print from EOI results..
         print_eoi_results($result);
+
         // Have we deleted an entry from delete.php?
         if (http_response_code(302)
         && preg_match("/delete.php/", $_SERVER['HTTP_REFERER'])) {
-        echo "<h2>User Deleted</h2>";
+            // GET referral will have action = delete and id of deleted user
+            if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+            $id = $_GET['id'];
+            delete_notification($id);
+            }
         }
         ?>
 
