@@ -25,6 +25,8 @@
 include 'settings.php';
 include 'functionsite.php';
 include 'menu.inc.php';
+//https://github.com/ircmaxell/password_compat/blob/master/lib/password.php
+include 'password.php';
 //create a new mySQLi connection
 $conn = new mysqli($host, $user, $password, $database);
 // Check for POST

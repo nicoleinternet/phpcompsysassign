@@ -10,10 +10,10 @@
 
 /* Explicitly declaring host, user, password and database
 so this can be changed by whoever for debugging. */
-$host = "127.0.0.1";
-$user = "root";
-$password = "";
-$database = "100589839_db";
+$host = "feenix-mariadb.swin.edu.au";
+$user = "s100589839";
+$password = "Pa55w.rd";
+$database = "s100589839_db";
 //create a new mySQLi connection
 $conn = new mysqli($host, $user, $password, $database);
 if ($conn->connect_errno) {

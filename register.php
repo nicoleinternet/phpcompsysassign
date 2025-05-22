@@ -19,6 +19,7 @@
 include 'settings.php';
 include 'functionsite.php';
 include 'menu.inc.php';
+include 'password.php';
 $conn = new mysqli($host, $user, $password, $database);
 session_start();
 $nameErr = $emailErr = $formErr = $passErr = "";

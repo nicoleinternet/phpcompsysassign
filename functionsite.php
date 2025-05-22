@@ -17,9 +17,9 @@ function test_input($data) {
 function fail($data){
     echo "<h1>Your input information is incorrect.</h1>";
     echo "<h2>Source: ".$data."</h2>";
-}
+};
 
-function isValidSignUpEmail($email,$conn) : bool {
+function isValidSignUpEmail($email,$conn) {
     if ($stmt = $conn->prepare("SELECT username FROM userdata WHERE email_address = ?")) {
         $stmt->bind_param("s",$email);
         $stmt->execute();
@@ -28,23 +28,27 @@ function isValidSignUpEmail($email,$conn) : bool {
         $stmt->bind_result($db_email);
         $stmt->fetch();
         if ($db_email == $email) {
-            return False;
+            return false;
         }
         if($stmt->num_rows > 0) {
-            return False;
+            return false;
         }
     }
-    return True;
+    return true;
 }
 // HELPER FUNCTIONS
 // TESTS IF $FIELD IF UNDER $SIZE = TRUE
-function is_under_size($field, $size) : bool {
+function is_under_size($field, $size) {
     $value = trim((string)$field);
-    return strlen($value) < $size;
+    if (strlen($value) < $size) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 // VALID POSTCODE
-function valid_postcode($state, $postcode) : bool {
+function valid_postcode($state, $postcode) {
 
     // https://stackoverflow.com/questions/14037290/what-does-or-mean-in-php
     // We can use => like the map<> in C++, letting us define
@@ -63,15 +67,15 @@ function valid_postcode($state, $postcode) : bool {
     ];
 // if the postcode is within the bounds of the states second dimension array
     if ($postcode >= $postcodes[$state][0] && $postcode <= $postcodes[$state][1]) {
-        return True;
+        return true;
     } else {
-        return False;
+        return false;
     }
 
 }
 
 // USE IN AN IF STATEMENT TO CHECK IF WE HAVE SET FIELDS
-function are_fields_set() : bool {
+function are_fields_set() {
 $requiredfields = ['firstName','lastName','jobRefNum','suburb','postcode','street_address','gender'];
 foreach ($requiredfields as $field) {
     if (!isset($_POST[$field]) || empty($_POST[$field])) {
@@ -83,7 +87,7 @@ foreach ($requiredfields as $field) {
 return true;
 }
 
-function is_array_set($requiredfields) : bool {
+function is_array_set($requiredfields) {
     foreach ($requiredfields as $field) {
         if (!isset($_POST[$field]) || empty($_POST[$field])) {
             echo "<p>Sorry, $field or more fields are empty.</p>";
