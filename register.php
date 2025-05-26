@@ -10,15 +10,14 @@
 <!DOCTYPE html>
 <html lang='en'>
 
-
-
-
 <?php
 // Author: Nicole Reichert (100589839) for COS10032 Comp. Systems Project
 // Assignment 2, PHP Forms (EOI). Team: Arvin Z, Matt C, Lachlan, Cale, Nicole
+include 'menu.inc.php';
+draw_headerhtml("Register Account");
 include 'settings.php';
 include 'functionsite.php';
-include 'menu.inc.php';
+//https://github.com/ircmaxell/password_compat/blob/master/lib/password.php
 include 'password.php';
 $conn = new mysqli($host, $user, $password, $database);
 session_start();
@@ -88,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 
-draw_headerhtml("Register Account");
+
 ?>
 
 
@@ -99,20 +98,21 @@ draw_headerhtml("Register Account");
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" novalidate="novalidate" class="submission">
             <h2>Register</h2>
-            <label for="username"><h4 class="hero-subtext">Username</h4></label>
-            <input type="text" placeholder="Enter Username" name="username" required>
+            <label for="username" class="hero-subtext">Username</label>
+            <input type="text" placeholder="Enter Username" id="username" name="username" required>
             <p class="error"><?php echo $nameErr;?></p>
 
-            <label for="email"><h4 class="hero-subtext">Email Address</h4></label>
-            <input type="email" placeholder="Enter Email Address" name="email" required>
+            <label for="email" class="hero-subtext">Email Address</label>
+            <input type="email" placeholder="Enter Email Address" id="email" name="email" required>
             <p class="error"><?php echo $emailErr;?></p>
 
-            <label for="password"><h4 class="hero-subtext">Password</h4></label>
-            <input type="password" name="password" placeholder="Enter Password" required>
+            <label for="password" class="hero-subtext">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required>
             <p class="error"><?php echo $passErr;?></p>
 
             <button type="submit" class="video-link">Submit</button>
             <p class="error"><?php echo $formErr;?></p>
+            <span class="error"><a href="login.php">Login</a></span>
 
         </form>
     </section>

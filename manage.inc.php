@@ -34,7 +34,7 @@ echo "<tr>
         <!--<td>{$row["status"]}</td>--> 
         <td>
         <form action='edit.php' method='post' novalidate='novalidate'>
-        <select name='status' id='status'>
+        <select name='status'>
             <option value='{$row["status"]}'>{$row["status"]}</option>
             <option value='New'>New</option>
             <option value='Current'>Current</option>

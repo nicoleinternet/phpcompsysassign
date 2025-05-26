@@ -7,24 +7,12 @@
 // password hash is different. After a successful login, a session will be created against the user.
 -->
 <!DOCTYPE html>
-<html lang='en'>
-<head>
-  <meta charset="UTF-8">
-  <meta name="description" content="CLAM Careers - Your Gateway to the Future of IT">
-  <meta name="keywords" content="IT Careers, Cyber Security, CLAM, Web, Australia, Future Tech">
-  <meta name="author" content="Arvin Zia">
-  <title>CLAM Careers - Login</title>
-  <link rel="stylesheet" href="../styles/style.css">
-  <style>
-
-    </style>
-</head>
-
-
+<html lang="en">
 <?php
+include 'menu.inc.php';
+draw_headerhtml("Login");
 include 'settings.php';
 include 'functionsite.php';
-include 'menu.inc.php';
 //https://github.com/ircmaxell/password_compat/blob/master/lib/password.php
 include 'password.php';
 //create a new mySQLi connection
@@ -78,7 +66,7 @@ if ($stmt = $conn->prepare("SELECT id, password FROM userdata WHERE username = ?
 }
 $conn->close();
 
-draw_headerhtml("Login");
+
 
 ?>
 
@@ -88,20 +76,27 @@ draw_headerhtml("Login");
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" novalidate="novalidate" class="submission">
             <h2>Login</h2>
-                <label for="username"><h4 class="hero-subtext">Username</h4></label>
-                <input type="text" placeholder="Enter Username" name="username" required>
+                <label for="username" class="hero-subtext">Username</label>
+                <input type="text" placeholder="Enter Username" id="username" name="username" required>
                 <p class="error"><?php echo $nameErr;?></p>
 
-                <label for="password"><h4 class="hero-subtext">Password</h4></label>
-                <input type="password" name="password" placeholder="Enter Password" required>
+                <label for="password" class="hero-subtext">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
                 <p class="error"><?php echo $passErr;?></p>
 
                 <button type="submit" class="video-link">Submit</button>
                 <p class="error"><?php echo $formErr;?></p>
+                <span class="error"><a href="register.php">Register</a></span>
 
         </form>
+
     </section>
+    <section class="eoiresult">
+    <h2>Video on Enhancments</h2>
+<iframe src="https://liveswinburneeduau-my.sharepoint.com/personal/100589839_student_swin_edu_au/_layouts/15/embed.aspx?UniqueId=a5090c75-9b3d-4c1d-a766-1115d4bee979&embed=%7B%22af%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="2025-05-22 17-01-17.mp4"></iframe>
+</section>
 </main>
+
 <?php draw_footerhtml(); ?>
 </body>
 </html>
